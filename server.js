@@ -3,7 +3,9 @@ import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt-nodejs';
 import cors from 'cors';
 import knex from 'knex';
-//import register from './controllers/register.js'
+
+
+
 
  const db = knex({
     client: 'pg',
@@ -30,13 +32,17 @@ app.get('/', (req, res)=> {
 });
 
 app.post('/signin', (req, res) => { 
+    const { email, password} = req.body;
+    if (!email || !password) {
+        return res.status(400).json('incorrect form submission');
+    }
     db.select('email', 'hash').from('login')
-    .where('email', '=', req.body.email)
+    .where('email', '=', email)
     .then(data => {
-        const isValid = bcrypt.compareSync(req.body.password, data[0].hash); 
+        const isValid = bcrypt.compareSync(password, data[0].hash); 
         if (isValid) {
             return db.select('*').from('users')
-            .where('email', '=', req.body.email)
+            .where('email', '=', email)
             .then(user => {
             res.json(user[0])
             })
@@ -51,6 +57,9 @@ app.post('/signin', (req, res) => {
 
 app.post('/register', (req, res)=> { 
     const {email, name, password} = req.body; 
+    if (!email || !name || !password) {
+        return res.status(400).json('incorrect form submission');
+    }
     const hash = bcrypt.hashSync(password);
     db.transaction(trx =>{
         trx.insert({
@@ -93,6 +102,8 @@ app.get('/profile/:id', (req, res) => {
     })
     .catch(err => res.status(400).json('error getting user'))     
 })
+
+
 
 app.put('/image', (req, res)=> {
     const { id } = req.body;
