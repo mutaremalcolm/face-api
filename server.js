@@ -28,7 +28,7 @@ const db = knex({
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors({origin: "https://sheltered-caverns-07603-a1c66e3151bd.herokuapp.com"}))
 
 app.get('/', (req, res)=> {
     res.send('success');
