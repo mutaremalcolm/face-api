@@ -13,11 +13,10 @@ import fetch from 'cross-fetch';
  const db = knex({
     client: 'pg',
     connection: {
-      host : 'postgresql-metric-71830',
-      port : 5432,
-      user : '',
-      password : '', 
-      database : 'smart-brain'
+      host : 'process.env.DATABASE_URL',
+      ssl: {
+        rejectUnauthorized: false
+      }
     }
   });
 
