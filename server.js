@@ -10,16 +10,16 @@ import { handleApiCall, handleImage } from './controllers/image.mjs'
 import fetch from 'cross-fetch';
 
 
-//  const db = knex({
-//     client: 'pg',
-//     connection: {
-//       host : '127.0.0.1',
-//       port : 5432,
-//       user : '',
-//       password : '', 
-//       database : 'smart-brain'
-//     }
-//   });
+ const db = knex({
+    client: 'pg',
+    connection: {
+      host : '127.0.0.1',
+      port : 5432,
+      user : '',
+      password : '', 
+      database : 'smart-brain'
+    }
+  });
 
 //db.select('*').from('users').then(data => {
     //console.log(data);
