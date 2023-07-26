@@ -10,6 +10,8 @@ import { handleApiCall, handleImage } from './controllers/image.mjs';
 //import { Client } from 'pg';
 import fetch from 'cross-fetch';
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
 
 const db = knex({
     client: 'pg',
