@@ -14,15 +14,22 @@ import fetch from 'cross-fetch';
 
 const db = knex({
     client: 'pg',
-    connection: {
-    host: process.env.DATABASE_URL,
-    ssl: true
-    }  
-  }); 
+    connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
-//db.select('*').from('users').then(data => {
-    //console.log(data);
-//});
+client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+}); 
+
 
 const app = express();
 
