@@ -11,7 +11,7 @@ import { Client } from 'pg';
 import fetch from 'cross-fetch';
 
 
-const client = new Client({
+const db = knex({
     client: 'pg',
     connection: {
         connectionString : 'process.env.DATABASE_URL',
@@ -19,7 +19,7 @@ const client = new Client({
         rejectUnauthorized: false
       }
     }
-  });
+  }); 
 
 //db.select('*').from('users').then(data => {
     //console.log(data);
