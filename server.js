@@ -13,7 +13,7 @@ import fetch from 'cross-fetch';
  const db = knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
+      host : 'postgresql-metric-71830',
       port : 5432,
       user : '',
       password : '', 
