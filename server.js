@@ -11,11 +11,6 @@ import { handleApiCall, handleImage } from './controllers/image.mjs';
 import fetch from 'cross-fetch';
 
 
-
-const app = express();
-app.use(bodyParser.json());
-app.use(cors({origin: "https://sheltered-caverns-07603-a1c66e3151bd.herokuapp.com"}))
-
 const db = knex({
     client: 'pg',
     connectionString: process.env.DATABASE_URL,
@@ -33,6 +28,10 @@ client.query('SELECT table_schema,table_name FROM information_schema.tables;', (
   }
   client.end();
 }); 
+
+const app = express();
+app.use(bodyParser.json());
+app.use(cors({origin: "https://sheltered-caverns-07603-a1c66e3151bd.herokuapp.com"}))
 
 app.get('/', (req, res)=> {
     res.send('success');
