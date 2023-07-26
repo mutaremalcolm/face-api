@@ -6,7 +6,7 @@ import knex from 'knex';
 import register from './controllers/register.cjs';
 import signin from './controllers/signin.cjs';
 import profile from './controllers/profile.cjs';
-import { handleApiCall, handleImage } from './controllers/image.mjs',
+import { handleApiCall, handleImage } from './controllers/image.mjs';
 import { Client } from 'pg';
 import fetch from 'cross-fetch';
 
