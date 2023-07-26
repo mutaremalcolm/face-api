@@ -14,9 +14,10 @@ import fetch from 'cross-fetch';
 
 const db = knex({
     client: 'pg',
-    host: 'postgresql-metric-71830',
-
-     
+    connection: {
+    host: process.env.DATABASE_URL,
+    ssl: true
+    }  
   }); 
 
 //db.select('*').from('users').then(data => {
