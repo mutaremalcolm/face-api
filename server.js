@@ -17,17 +17,7 @@ const db = knex({
   ssl: {
     rejectUnauthorized: false
   }
-});
-
-// client.connect();
-
-// client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-//   if (err) throw err;
-//   for (let row of res.rows) {
-//     console.log(JSON.stringify(row));
-//   }
-//   client.end();
-// }); 
+}); 
 
 const app = express();
 app.use(bodyParser.json());
@@ -37,9 +27,7 @@ app.get('/', (req, res)=> {
     res.send('success');
 });
 
-app.get('/', (req, res)=> { 
-    res.set('Content-Type', 'application/javascript');
-    res.send('it is working') })
+app.get('/', (req, res)=> { res.set('Content-Type', 'application/javascript');res.send('it is working') })
 app.post('/signin', (req, res) => {signin.handleSignin(req, res, db, bcrypt)});
 app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)});
 app.get('/profile/:id', (req, res)=> {profile.handleProfileGet(req, res, db)});
