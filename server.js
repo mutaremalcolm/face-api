@@ -12,7 +12,20 @@ import fetch from 'cross-fetch';
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors({}));
+app.use(cors());
+app.use(function (req, res, next){
+    res.header("Access-Control-Allow-Origin", "https://facedetectapp-31af.onrender.com/");
+    res.header(
+        "Access-Control-Allow-Methods",
+        "GET,HEAD,OPTIONS,POST,PUT,DELETE"
+    );
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+    next();
+});
+
 
 const db = knex({
     client: 'pg',
