@@ -1,5 +1,5 @@
 import { ClarifaiStub, grpc } from "clarifai-nodejs-grpc";
-import Clarifai from Clarifai;
+//import Clarifai from Clarifai;
 
 const stub = ClarifaiStub.grpc();
 
