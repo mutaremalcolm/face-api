@@ -11,6 +11,8 @@ import { handleApiCall, handleImage } from './controllers/image.mjs';
 import fetch from 'cross-fetch';
 
 
+app.use(cors({}));
+
 const db = knex({
     client: 'pg',
     connectionString: 'postgres://smart_brain_4w94_user:13wmUVDQ51bgIWimWK4fxWe6N9B80Gd4@dpg-cj4bth59aq047cblhulg-a/smart_brain_4w94',
@@ -24,7 +26,7 @@ const db = knex({
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors({}));
+
 
 app.get('/', (req, res)=> {
     res.send('success');
