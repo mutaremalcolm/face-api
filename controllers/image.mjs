@@ -3,7 +3,7 @@ import { ClarifaiStub, grpc } from "clarifai-nodejs-grpc";
 
 const stub = ClarifaiStub.grpc();
 
-const app = new Clarifai.App({
+const app = new ClarifaiStub.App({
     apiKey: 'bbc3f9c5d7a847e2b22eb8fb55f7978e'
    });
 
