@@ -16,7 +16,7 @@ app.use(cors({}));
 
 const db = knex({
     client: 'pg',
-    connectionString: 'postgres://smart_brain_4w94_user:13wmUVDQ51bgIWimWK4fxWe6N9B80Gd4@dpg-cj4bth59aq047cblhulg-a/smart_brain_4w94',
+    connectionString: process.env.DATABASE_URL,
     ssl: {rejectUnauthorized: false},
     host: process.env.DATABASE_HOST,
     port: 5432,
