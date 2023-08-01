@@ -10,7 +10,8 @@ import { handleApiCall, handleImage } from './controllers/image.mjs';
 // import { client } from 'pg';
 import fetch from 'cross-fetch';
 
-
+const app = express();
+app.use(bodyParser.json());
 app.use(cors({}));
 
 const db = knex({
@@ -23,9 +24,6 @@ const db = knex({
     password: process.env.DATABASE_PW,
     database : process.env.DATABASE_DB
 }); 
-
-const app = express();
-app.use(bodyParser.json());
 
 
 app.get('/', (req, res)=> {
