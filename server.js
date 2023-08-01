@@ -12,9 +12,7 @@ import fetch from 'cross-fetch';
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors({
-    origin: "localhost://localhost:3000"
-}));
+app.use(cors({}));
 
 const db = knex({
     client: 'pg',
