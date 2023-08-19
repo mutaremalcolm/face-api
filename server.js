@@ -3,10 +3,10 @@ import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt-nodejs';
 import cors from 'cors';
 import knex from 'knex';
-import register from './controllers/register.cjs';
-import signin from './controllers/signin.cjs';
-import profile from './controllers/profile.cjs';
-import { handleApiCall, handleImage } from './controllers/image.mjs';
+import register from './controllers/register.js';
+import signin from './controllers/signin.js';
+import profile from './controllers/profile.js';
+import { handleApiCall, handleImage } from './controllers/image.js';
 // import { client } from 'pg';
 import fetch from 'cross-fetch';
 
